@@ -12,11 +12,7 @@
 
     <ul class="todo-list">
       <li class="todo-item" v-for="todo in note.todos" :key="todo.id">
-        <VInput
-          class="todo-checkbox"
-          v-model="todo.isCompleted"
-          type="checkbox"
-        />
+        <VCheckbox class="todo-checkbox" v-model="todo.isCompleted" />
         <VInput
           class="todo-input"
           v-model="todo.title"
@@ -46,11 +42,12 @@
 
 <script setup lang="ts">
 import { ref } from 'vue';
-import { useNotes } from '~/composables/useNotes';
-import { useRouter, useRoute } from 'vue-router';
-import type { Note } from '~/types/note';
+import { useRoute, useRouter } from 'vue-router';
 import VButton from '~/components/ui/VButton.vue';
+import VCheckbox from '~/components/ui/VCheckbox.vue';
 import VInput from '~/components/ui/VInput.vue';
+import { useNotes } from '~/composables/useNotes';
+import type { Note } from '~/types/note';
 
 const { notes, addNote, updateNote, removeNote } = useNotes();
 const router = useRouter();

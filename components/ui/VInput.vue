@@ -22,11 +22,15 @@ const modelValue = defineModel();
 }
 
 @media (max-width: 768px) {
-  font-size: 0.9rem;
+  .v-input {
+    font-size: 0.9rem;
+  }
 }
 
 @media (max-width: 480px) {
-  font-size: 0.8rem;
-  padding: 6px;
+  .v-input {
+    font-size: 0.8rem;
+    padding: 6px;
+  }
 }
 </style>
