@@ -7,7 +7,7 @@
         v-for="todo in note.todos.slice(0, 3)"
         :key="todo.id"
       >
-        <input type="checkbox" v-model="todo.isCompleted" />
+        <VCheckbox v-model="todo.isCompleted" />
         {{ todo.title }}
       </li>
     </ul>
@@ -25,6 +25,7 @@
 import { useRouter } from 'vue-router';
 import VButton from '~/components/ui/VButton.vue';
 import type { Note } from '~/types/note';
+import VCheckbox from './ui/VCheckbox.vue';
 
 type Props = {
   note: Note;
