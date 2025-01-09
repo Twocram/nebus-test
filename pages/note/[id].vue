@@ -10,19 +10,7 @@
       placeholder="Название заметки"
     />
 
-    <ul class="todo-list">
-      <li class="todo-item" v-for="todo in note.todos" :key="todo.id">
-        <VCheckbox class="todo-checkbox" v-model="todo.isCompleted" />
-        <VInput
-          class="todo-input"
-          v-model="todo.title"
-          placeholder="Текст задачи"
-        />
-        <VButton class="todo-remove" @click="removeTodo(todo.id)">
-          Удалить
-        </VButton>
-      </li>
-    </ul>
+    <VTodoList :todos="note.todos" @remove-todo="removeTodo($event)" />
 
     <VButton class="add-todo" @click="addTodo">Добавить пункт</VButton>
 
@@ -44,8 +32,8 @@
 import { ref } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import VButton from '~/components/ui/VButton.vue';
-import VCheckbox from '~/components/ui/VCheckbox.vue';
 import VInput from '~/components/ui/VInput.vue';
+import VTodoList from '~/components/VTodoList.vue';
 import { useNotes } from '~/composables/useNotes';
 import type { Note } from '~/types/note';
 
@@ -119,46 +107,6 @@ const removeTodo = (todoId: number) => {
   border-radius: 5px;
 }
 
-.todo-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.todo-item {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 10px;
-}
-
-.todo-checkbox {
-  transform: scale(1.2);
-}
-
-.todo-input {
-  flex: 1;
-  padding: 8px;
-  font-size: 1rem;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-}
-
-.todo-remove {
-  padding: 5px 10px;
-  background-color: #ff4d4d;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 0.9rem;
-  transition: background-color 0.3s ease;
-}
-
-.todo-remove:hover {
-  background-color: #ff1a1a;
-}
-
 .add-todo {
   padding: 10px 20px;
   background-color: #333;
@@ -213,12 +161,10 @@ const removeTodo = (todoId: number) => {
 }
 
 @media (max-width: 768px) {
-  .note-title,
-  .todo-input {
+  .note-title {
     font-size: 0.9rem;
   }
 
-  .todo-remove,
   .add-todo,
   .action-button {
     font-size: 0.8rem;
@@ -235,13 +181,11 @@ const removeTodo = (todoId: number) => {
     font-size: 1.5rem;
   }
 
-  .note-title,
-  .todo-input {
+  .note-title {
     font-size: 0.8rem;
     padding: 6px;
   }
 
-  .todo-remove,
   .add-todo,
   .action-button {
     font-size: 0.7rem;
