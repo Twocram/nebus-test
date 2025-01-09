@@ -38,11 +38,10 @@ yarn dev
 bun run dev
 ```
 
-
 Or using Docker:
 
 ```bash
-docker-compose up --build
+docker-compose up
 ```
 
 ## Production
@@ -62,7 +61,6 @@ yarn build
 # bun
 bun run build
 ```
-
 
 Locally preview production build:
 
