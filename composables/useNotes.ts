@@ -20,9 +20,9 @@ export const useNotes = () => {
   };
 
   const updateNote = (id: number, updatedNote: Note) => {
-    let note = notes.value.find((note: Note) => note.id === id);
-    if (note) {
-      note = { ...note, ...updatedNote };
+    const index = notes.value.findIndex((note) => note.id === id);
+    if (index !== -1) {
+      notes.value[index] = updatedNote;
       saveNotes();
     }
   };
