@@ -41,7 +41,7 @@ bun run dev
 Or using Docker:
 
 ```bash
-docker-compose up
+docker-compose up --build
 ```
 
 ## Production
